@@ -13,7 +13,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", cursive;
     /* transition: all  0.3s ease; */
 }
 body{
@@ -35,16 +35,16 @@ main{
     transform: translate(-50%, -50%);
 }
  .choosebox{
-    background: linear-gradient(45deg, rgb(173, 185, 252) 10%, #fff 90%);
+    background: linear-gradient(45deg, rgb(19, 239, 232) 10%, rgb(103, 110, 242) 90%);
     padding: 18px;
-    border-radius: 5px;
+    border-radius: 10px;
     max-width: 300px;
-    width: 100%;
+    width: 300%;
     box-shadow: 0 0 1vmin 1vmin #eee3;
 } 
 .gamename{
     width: 100%;
-    background: -webkit-linear-gradient(45deg, #010913, #0461be);
+    background: -webkit-linear-gradient(45deg, #00050b, #020b13);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 25px;
@@ -54,10 +54,10 @@ main{
     text-align: center;    
 }
 .question{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    font-weight: 600;
+    margin-top: 75px;
+    margin-bottom: 75px;
+    font-size: 30px;
+    font-weight: 550;
     width: 100%;
     text-align: center;
     float:center;
@@ -65,14 +65,14 @@ main{
 .choice{
     display: flex;
     width: 100%;
-    justify-content:space-evenly;
+    justify-content:space-between;
 }
 .choice button, .rbtn button{
     width: 45%;
     background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
-    color: rgb(172, 206, 252);
-    border: none;
-    outline: none;
+    color: rgb(247, 250, 255);
+    border: 5px solid transparent;
+    outline: 5px double;
     border-radius: 5px;
     font-size: 18px;
     font-weight: 500;
@@ -236,11 +236,11 @@ main{
     </style>
     <main>
         <div class="choosebox">
-            <div class="gamename">Tic Tac Toe</div>
-                <div class="question">Select which you want to be?</div>
+            <div class="gamename">TIC TAC TOE</div>
+                <div class="question">Select Which you want to be X or O ?</div>
                 <div class="choice">
-                    <button class="pX" onclick="pxo()">PlayerX</button>
-                    <button class="pO" onclick="poo()">PlayerO</button>
+                    <button class="pX" onclick="pxo()">Player : X</button>
+                    <button class="pO" onclick="poo()">Player : O</button>
                 </div> 
         </div>
         <div class="board">
