@@ -1,397 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="C:\Users\anshi\OneDrive\Desktop\ticself.css">
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    /* transition: all  0.3s ease; */
-}
-body{
-    background: linear-gradient(45deg, #e5f4f7 50%, rgb(10, 116, 253) 50%);
-}
-main{
-    position: relative;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(67.5deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%,rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%,rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%,rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%,rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%,rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%,rgb(125,123,123) 95%, rgb(125,123,123) 100%),linear-gradient(90deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%,rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%,rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%,rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%,rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%,rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%,rgb(125,123,123) 95%, rgb(125,123,123) 100%),linear-gradient(135deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%,rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%,rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%,rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%,rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%,rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%,rgb(125,123,123) 95%, rgb(125,123,123) 100%),linear-gradient(0deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%,rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%,rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%,rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%,rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%,rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%,rgb(125,123,123) 95%, rgb(125,123,123) 100%),linear-gradient(90deg, rgb(8, 8, 8),rgb(47,223,255)); background-blend-mode:overlay,overlay,overlay,overlay,normal;
-}
-.choosebox, .board, .winner{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
- .choosebox{
-    background: linear-gradient(45deg, rgb(173, 185, 252) 10%, #fff 90%);
-    padding: 18px;
-    border-radius: 5px;
-    max-width: 300px;
-    width: 100%;
-    box-shadow: 0 0 1vmin 1vmin #eee3;
-} 
-.gamename{
-    width: 100%;
-    background: -webkit-linear-gradient(45deg, #010913, #0461be);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 25px;
-    font-weight: 900;
-    padding-bottom: 7px;
-    border-bottom: 1px solid rgba(34, 34, 34, 0.333);   
-    text-align: center;    
-}
-.question{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    width: 100%;
-    text-align: center;
-    float:center;
-}
-.choice{
-    display: flex;
-    width: 100%;
-    justify-content:space-evenly;
-}
-.choice button, .rbtn button{
-    width: 45%;
-    background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
-    color: rgb(172, 206, 252);
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px;
-    cursor: pointer;
-}
-.choice button:hover,.rbtn button:hover{
-    transform: scale(0.93);
-    box-shadow: 0 0 2px 3px #ccc9;
-    color: rgb(220, 242, 255);
-}
-.board{
-    opacity: 1;
-    transform: translate(-50%,-50%) scale(1);
-    pointer-events: auto;
-}
-.board section{
-    display: flex;
-    flex-direction: row;
-}
-.board section span{
-    display: block;
-    height: 80px;
-    width: 80px;
-    background: linear-gradient(45deg, rgb(173, 185, 252) 10%, rgb(229, 248, 250) 90%);
-    margin: 2.5px;
-    border-radius: 5px;
-    text-align: center;
-    line-height: 80px;
-    font-size: 60px;
-    font-weight: 900;
-    text-shadow: 0 0 5px rgba(90, 114, 250, 0.925);
-    color: #010e30;
-}
-.users{
-    display: flex;
-    justify-content: space-evenly;
-    background: linear-gradient(45deg, rgb(173, 185, 252) 10%, rgb(229, 248, 250) 90%);
-    width: 100%;
-    position: relative;
-    padding: 7px;
-    border-radius: 5px;
-    margin-bottom: 25px;
-}
-.users span{
-    width: 45%;
-    background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
-    color: rgb(172, 206, 252);
-    border-radius: 5px;
-    padding: 7px;
-    font-size: 19px;
-    font-weight: 500;
-    cursor: default;
-    text-align: center;
-    z-index: 1;
-}
-.turn{
-    position: absolute;
-    top: 0;
-    left: 0%;
-    height: 100%;
-    width: 50%;
-    background: #5672ed;
-    border-radius: 5px;
-}
-.users span.X{
-    color: #fff;
-}
-.users.act span.X{
-    color: #56baed;
-}
-.users.act span:.O{
-    color: #fff;
-}
-.users.act .turn{
-    left:50%;
-}
-.game{
-    margin-top: 20px;
-}
-.winner{
-    background: linear-gradient(45deg, rgb(173, 185, 252) 10%, #fff 90%);
-    padding: 18px;
-    border-radius: 5px;
-    max-width: 300px;
-    width: 100%;
-    box-shadow: 0 0 1vmin 1vmin #eee3;   
-}
-.text{
-    font-size: 25px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-}
-.text p{
-    background: -webkit-linear-gradient(135deg, #010913, #0461be);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 25px;
-    font-weight: 900;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding-bottom: -5px;
-}
-.rbtn{
-    display: flex;
-    justify-content: center;
-    margin-top: 18px;
-}
-.box{
-    position: relative;
-}
-.cross:before{
-    content: "";
-    position: absolute;
-    height: 15px;
-    width: 60px;
-    background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
-    transform: translate(-50%,-50%) rotate(60deg);
-    top: 50%;
-    left: 50%;
-}
-.cross:after{
-    content: "";
-    position: absolute;
-    height: 15px;
-    width: 60px;
-    background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
-    transform: translate(-50%,-50%) rotate(-60deg);
-    top: 50%;
-    left: 50%;
-}
-.circle:before{
-    content: "";
-    position: absolute;
-    width: 35px;
-    height:35px;
-    background: transparent;
-    transform: translate(-50%,-50%) rotate(60deg);
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    border:10px solid #274efc;
-}
-.board, .winner{
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%,-50%) scale(0.9);
-}
-.on{
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%,-50%) scale(1);
-}
-.off{
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%,-50%) scale(0.9);
-} 
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        /* transition: all  0.3s ease; */
+      }
 
+      body {
+        background: linear-gradient(45deg, #e5f4f7 50%, rgb(10, 116, 253) 50%);
+      }
+
+      main {
+        position: relative;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        background-image: linear-gradient(67.5deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%, rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%, rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%, rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%, rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%, rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%, rgb(125, 123, 123) 95%, rgb(125, 123, 123) 100%), linear-gradient(90deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%, rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%, rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%, rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%, rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%, rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%, rgb(125, 123, 123) 95%, rgb(125, 123, 123) 100%), linear-gradient(135deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%, rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%, rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%, rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%, rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%, rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%, rgb(125, 123, 123) 95%, rgb(125, 123, 123) 100%), linear-gradient(0deg, rgb(6, 6, 6) 0%, rgb(6, 6, 6) 6%, rgb(29, 29, 29) 6%, rgb(29, 29, 29) 57%, rgb(52, 52, 52) 57%, rgb(52, 52, 52) 58%, rgb(75, 75, 75) 58%, rgb(75, 75, 75) 79%, rgb(97, 97, 97) 79%, rgb(97, 97, 97) 93%, rgb(120, 120, 120) 93%, rgb(120, 120, 120) 95%, rgb(125, 123, 123) 95%, rgb(125, 123, 123) 100%), linear-gradient(90deg, rgb(8, 8, 8), rgb(47, 223, 255));
+        background-blend-mode: overlay, overlay, overlay, overlay, normal;
+      }
+
+      .choosebox,
+      .board,
+      .winner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .choosebox {
+        background: linear-gradient(45deg, rgb(173, 185, 252) 10%, #fff 90%);
+        padding: 18px;
+        border-radius: 5px;
+        max-width: 300px;
+        width: 100%;
+        box-shadow: 0 0 1vmin 1vmin #eee3;
+      }
+
+      .gamename {
+        width: 100%;
+        background: -webkit-linear-gradient(45deg, #010913, #0461be);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 25px;
+        font-weight: 900;
+        padding-bottom: 7px;
+        border-bottom: 1px solid rgba(34, 34, 34, 0.333);
+        text-align: center;
+      }
+
+      .question {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        text-align: center;
+        float: center;
+      }
+
+      .choice {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+      }
+
+      .choice button,
+      .rbtn button {
+        width: 45%;
+        background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
+        color: rgb(172, 206, 252);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      .choice button:hover,
+      .rbtn button:hover {
+        transform: scale(0.93);
+        box-shadow: 0 0 2px 3px #ccc9;
+        color: rgb(220, 242, 255);
+      }
+
+      .board {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+      }
+
+      .board section {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .board section span {
+        display: block;
+        height: 80px;
+        width: 80px;
+        background: linear-gradient(45deg, rgb(173, 185, 252) 10%, rgb(229, 248, 250) 90%);
+        margin: 2.5px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 80px;
+        font-size: 60px;
+        font-weight: 900;
+        text-shadow: 0 0 5px rgba(90, 114, 250, 0.925);
+        color: #010e30;
+      }
+
+      .users {
+        display: flex;
+        justify-content: space-evenly;
+        background: linear-gradient(45deg, rgb(173, 185, 252) 10%, rgb(229, 248, 250) 90%);
+        width: 100%;
+        position: relative;
+        padding: 7px;
+        border-radius: 5px;
+        margin-bottom: 25px;
+      }
+
+      .users span {
+        width: 45%;
+        background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
+        color: rgb(172, 206, 252);
+        border-radius: 5px;
+        padding: 7px;
+        font-size: 19px;
+        font-weight: 500;
+        cursor: default;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .turn {
+        position: absolute;
+        top: 0;
+        left: 0%;
+        height: 100%;
+        width: 50%;
+        background: #5672ed;
+        border-radius: 5px;
+      }
+
+      .users span.X {
+        color: #fff;
+      }
+
+      .users.act span.X {
+        color: #56baed;
+      }
+
+      .users.act span:.O {
+        color: #fff;
+      }
+
+      .users.act .turn {
+        left: 50%;
+      }
+
+      .game {
+        margin-top: 20px;
+      }
+
+      .winner {
+        background: linear-gradient(45deg, rgb(173, 185, 252) 10%, #fff 90%);
+        padding: 18px;
+        border-radius: 5px;
+        max-width: 300px;
+        width: 100%;
+        box-shadow: 0 0 1vmin 1vmin #eee3;
+      }
+
+      .text {
+        font-size: 25px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+      }
+
+      .text p {
+        background: -webkit-linear-gradient(135deg, #010913, #0461be);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 25px;
+        font-weight: 900;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-bottom: -5px;
+      }
+
+      .rbtn {
+        display: flex;
+        justify-content: center;
+        margin-top: 18px;
+      }
+
+      .box {
+        position: relative;
+      }
+
+      .cross:before {
+        content: "";
+        position: absolute;
+        height: 15px;
+        width: 60px;
+        background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
+        transform: translate(-50%, -50%) rotate(60deg);
+        top: 50%;
+        left: 50%;
+      }
+
+      .cross:after {
+        content: "";
+        position: absolute;
+        height: 15px;
+        width: 60px;
+        background: linear-gradient(45deg, rgb(1, 1, 24), rgb(9, 1, 80));
+        transform: translate(-50%, -50%) rotate(-60deg);
+        top: 50%;
+        left: 50%;
+      }
+
+      .circle:before {
+        content: "";
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        background: transparent;
+        transform: translate(-50%, -50%) rotate(60deg);
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        border: 10px solid #274efc;
+      }
+
+      .board,
+      .winner {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+
+      .on {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .off {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
     </style>
     <main>
-        <div class="choosebox">
-            <div class="gamename">Tic Tac Toe</div>
-                <div class="question">Select which you want to be?</div>
-                <div class="choice">
-                    <button class="pX" onclick="pxo()">PlayerX</button>
-                    <button class="pO" onclick="poo()">PlayerO</button>
-                </div> 
+      <div class="choosebox">
+        <div class="gamename">Tic Tac Toe</div>
+        <div class="question">Select which you want to be?</div>
+        <div class="choice">
+          <button class="pX" onclick="pxo()">PlayerX</button>
+          <button class="pO" onclick="poo()">PlayerO</button>
         </div>
-        <div class="board">
-            <div class="score">
-                <div class="users">
-                    <div class="turn"></div>
-                    <span class="X">X's Turn</span>
-                    <span class="O">O's Turn</span>
-                </div>
-            </div>
-            <div class="game">
-                <section>
-                    <span class="box box1"></span>
-                    <span class="box box2"></span>
-                    <span class="box box3"></span>
-                </section>
-                <section>
-                    <span class="box box4"></span>
-                    <span class="box box5"></span>
-                    <span class="box box6"></span>
-                </section>
-                <section>
-                    <span class="box box7"></span>
-                    <span class="box box8"></span>
-                    <span class="box box9"></span>
-                </section>
-            </div>
+      </div>
+      <div class="board">
+        <div class="score">
+          <div class="users">
+            <div class="turn"></div>
+            <span class="X">X's Turn</span>
+            <span class="O">O's Turn</span>
+          </div>
         </div>
-        <div class="winner">
-            <div class="text"></div>
-            <div class="rbtn">
-                <button onclick="replay()">Replay</button>
-            </div>
+        <div class="game">
+          <section>
+            <span class="box box1"></span>
+            <span class="box box2"></span>
+            <span class="box box3"></span>
+          </section>
+          <section>
+            <span class="box box4"></span>
+            <span class="box box5"></span>
+            <span class="box box6"></span>
+          </section>
+          <section>
+            <span class="box box7"></span>
+            <span class="box box8"></span>
+            <span class="box box9"></span>
+          </section>
         </div>
+      </div>
+      <div class="winner">
+        <div class="text"></div>
+        <div class="rbtn">
+          <button onclick="replay()">Replay</button>
+        </div>
+      </div>
     </main>
     <script>
-        var choosebox= document.querySelector(".choosebox");
-        var pX = document.querySelector(".pX");
-        var pO = document.querySelector(".pO");
-        var board = document.querySelector(".board");
-        var gbox = document.querySelectorAll("section span");
-        var users = document.querySelector(".users");
-        var winner = document.querySelector(".winner");
-        var text = document.querySelector(".text");
-        var rbtn = document.querySelector(".rbtn");
-        
-        let piX = "cross";
-        let piO = "circle";
-        let ps = "X";
-        let game = "true";
+      var choosebox = document.querySelector(".choosebox");
+      var pX = document.querySelector(".pX");
+      var pO = document.querySelector(".pO");
+      var board = document.querySelector(".board");
+      var gbox = document.querySelectorAll("section span");
+      var users = document.querySelector(".users");
+      var winner = document.querySelector(".winner");
+      var text = document.querySelector(".text");
+      var rbtn = document.querySelector(".rbtn");
+      let piX = "cross";
+      let piO = "circle";
+      let ps = "X";
+      let game = "true";
 
-        function pxo(){
-                choosebox.classList.add("off"); 
-                board.classList.add("on"); 
-                users.setAttribute("class", "users user"); //marked
-            }
-        function poo(){
-                choosebox.classList.add("off"); 
-                board.classList.add("on");
-                users.setAttribute("class", "users act"); //marked
-            }
-        function gid(nid){
-            return document.querySelector(".box" + nid).id; //returning id name
-        }
-        function see(b1, b2, b3, icon){
-            if(gid(b1) == icon && gid(b2) == icon && gid(b3) == icon){
-                return true;
-            }
-        }
-        function replay(){
-            window.location.reload();
-        }
-        window.onload = ()=>{
-             for (let i = 0; i<gbox.length; i++){ 
-                 gbox[i].setAttribute("onclick", "tic(this)");
-             }            
-        }
+      function pxo() {
+        choosebox.classList.add("off");
+        board.classList.add("on");
+        users.setAttribute("class", "users user"); //marked
+      }
 
-        function tic(obj){
-             console.log(obj);
-             if(users.classList.contains("user")){
-                obj.innerHTML = `<i class="${piX}"></i>`;
-                users.classList.add("act");
-                ps = "X";
-                obj.setAttribute("id", ps);
-            }else{
-                obj.innerHTML = `<i class="${piO}"></i>`; 
-                users.classList.add("act");                
-                obj.setAttribute("id", ps); //marked
+      function poo() {
+        choosebox.classList.add("off");
+        board.classList.add("on");
+        users.setAttribute("class", "users act"); //marked
+      }
+
+      function gid(nid) {
+        return document.querySelector(".box" + nid).id; //returning id name
+      }
+
+      function see(b1, b2, b3, icon) {
+        if (gid(b1) == icon && gid(b2) == icon && gid(b3) == icon) {
+          return true;
+        }
+      }
+
+      function replay() {
+        window.location.reload();
+      }
+      window.onload = () => {
+        for (let i = 0; i < gbox.length; i++) {
+          gbox[i].setAttribute("onclick", "tic(this)");
+        }
+      }
+
+      function tic(obj) {
+        console.log(obj);
+        if (users.classList.contains("user")) {
+          obj.innerHTML = `
+								<i class="${piX}"></i>`;
+          users.classList.add("act");
+          ps = "X";
+          obj.setAttribute("id", ps);
+        } else {
+          obj.innerHTML = `
+								<i class="${piO}"></i>`;
+          users.classList.add("act");
+          obj.setAttribute("id", ps); //marked
+        }
+        result();
+        board.style.pointerEvents = "none";
+        obj.style.pointerEvents = "none";
+        let dtime = ((Math.random() * 1000) + 200).toFixed();
+        setTimeout(() => {
+          comp(game);
+        }, dtime);
+      }
+
+      function comp(game) {
+        if (game) {
+          ps = "X";
+          let arr = [];
+          for (let i = 0; i < gbox.length; i++) {
+            if (gbox[i].childElementCount == 0) {
+              arr.push(i);
+            }
+          }
+          let ranbox = arr[Math.floor(Math.random() * arr.length)];
+          if (arr.length > 0) {
+            if (users.classList.contains("user")) {
+              gbox[ranbox].innerHTML = `
+									<i class="${piO}"></i>`;
+              users.classList.remove("act");
+              ps = "O";
+              gbox[ranbox].setAttribute("id", ps);
+            } else {
+              gbox[ranbox].innerHTML = `
+									<i class="${piX}"></i>`;
+              users.classList.remove("act");
+              gbox[ranbox].setAttribute("id", ps);
             }
             result();
-            board.style.pointerEvents = "none";
-            obj.style.pointerEvents = "none";
-             let dtime = ((Math.random() * 1000) + 200).toFixed();
-             setTimeout(()=>{
-                comp(game);
-            }, dtime);             
+          }
+          gbox[ranbox].style.pointerEvents = "none";
+          board.style.pointerEvents = "auto";
+          ps = "O";
         }
-        
-        function comp(game){
-            if(game){ 
-                ps = "X";
-            let arr =[];
-            for(let i=0; i<gbox.length; i++){
-                if(gbox[i].childElementCount == 0){
-                    arr.push(i);
-                }
-            }
-            let ranbox = arr[Math.floor(Math.random() * arr.length)]; 
-            if(arr.length > 0){
-                if(users.classList.contains("user")){
-                gbox[ranbox].innerHTML = `<i class="${piO}"></i>`;
-                users.classList.remove("act");
-                ps = "O";
-                gbox[ranbox].setAttribute("id", ps);
-                }else{
-                gbox[ranbox].innerHTML = `<i class="${piX}"></i>`;
-                users.classList.remove("act");
-                gbox[ranbox].setAttribute("id", ps);
-                }
-                result();
-            }
-            gbox[ranbox].style.pointerEvents = "none";
-            board.style.pointerEvents = "auto"; 
-            ps="O";
-            }
-        }
+      }
 
-        function result(){
-            if(see(1,2,3, ps) || see(4,5,6, ps) || see(7,8,9, ps) || see(1,4,7, ps) || see(2,5,8, ps) || see(3,6,9, ps) || see(1,5,9, ps) || see(3,5,7, ps)){
-                game = false;
-                comp(game);
-                setTimeout(()=>{
-                    board.classList.remove("on");
-                    winner.classList.add("on");
-                }, 700);
-
-                text.innerHTML = `Player <p>${ps}</p> won the game!`;
-            }else{
-                if(gid(1) != "" && gid(2) != "" && gid(3) != "" && gid(4) != "" && gid(5) != "" && gid(6) != "" && gid(7) != "" && gid(8) != "" && gid(9) != ""){
-                    game = false;
-                    comp(game);
-                setTimeout(()=>{
-                    board.classList.remove("on");
-                    winner.classList.add("on");
+      function result() {
+        if (see(1, 2, 3, ps) || see(4, 5, 6, ps) || see(7, 8, 9, ps) || see(1, 4, 7, ps) || see(2, 5, 8, ps) || see(3, 6, 9, ps) || see(1, 5, 9, ps) || see(3, 5, 7, ps)) {
+          game = false;
+          comp(game);
+          setTimeout(() => {
+            board.classList.remove("on");
+            winner.classList.add("on");
+          }, 700);
+          text.innerHTML = `Player 
+									<p>${ps}</p> won the game!`;
+        } else {
+          if (gid(1) != "" && gid(2) != "" && gid(3) != "" && gid(4) != "" && gid(5) != "" && gid(6) != "" && gid(7) != "" && gid(8) != "" && gid(9) != "") {
+            game = false;
+            comp(game);
+            setTimeout(() => {
+              board.classList.remove("on");
+              winner.classList.add("on");
             }, 700);
-                text.innerHTML = `Match has been drawn`;
-                }
-            }
+            text.innerHTML = `Match has been drawn`;
+          }
         }
-        
+      }
     </script>
-</body>
+  </body>
 </html>
